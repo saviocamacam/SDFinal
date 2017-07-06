@@ -1,0 +1,22 @@
+// python -m grpc_tools.protoc -I --python_out=. --grpc_python_out=. helloworld.proto
+
+syntax = "proto3";
+
+service Book {
+  rpc AddPerson (Person) returns (Reply) {}
+  rpc RemovePerson (Person) returns (Reply) {}
+  rpc GetListOfPersons (Request) returns (stream Person) {}
+}
+
+message Person {
+	string name = 1;
+	string number = 2;
+}
+
+message Reply {
+	int32 status = 1;
+}
+
+message Request {
+	int32 status = 1;
+}
